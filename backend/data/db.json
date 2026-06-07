@@ -1,0 +1,299 @@
+{
+  "users": [],
+  "products": [
+    {
+      "id": "prod_1",
+      "name": "Classic Himalayan Pink Salt Makhana",
+      "description": "Slow-roasted to crispy perfection and lightly dusted with mineral-rich Himalayan pink salt and a touch of organic olive oil. The perfect clean, guilt-free daily snack.",
+      "price": 4.99,
+      "category": "Plain",
+      "flavor": "Salted",
+      "stock": 120,
+      "rating": 4.8,
+      "nutrients": {
+        "calories": 350,
+        "protein": 9.2,
+        "carbs": 77,
+        "fat": 1.2,
+        "fiber": 14.5
+      },
+      "color": "#F3E5AB",
+      "image": "/images/product_salted.png"
+    },
+    {
+      "id": "prod_2",
+      "name": "Tangy Tomato Herbs Makhana",
+      "description": "A delightful blend of sun-dried tomato powder, dynamic Indian spices, and aromatic Italian herbs. It is sweet, sour, and intensely flavorful.",
+      "price": 5.49,
+      "category": "Savory",
+      "flavor": "Tomato",
+      "stock": 95,
+      "rating": 4.6,
+      "nutrients": {
+        "calories": 365,
+        "protein": 8.8,
+        "carbs": 74,
+        "fat": 3.5,
+        "fiber": 13
+      },
+      "color": "#FF7F50",
+      "image": "/images/product_tomato.png"
+    },
+    {
+      "id": "prod_3",
+      "name": "Smoked Peri-Peri Fire Makhana",
+      "description": "For those who love a spicy kick! Coated with a fiery seasoning of African bird's eye chilies, garlic, lemon peel, and smoked paprika.",
+      "price": 5.99,
+      "category": "Spicy",
+      "flavor": "Peri-Peri",
+      "stock": 80,
+      "rating": 4.9,
+      "nutrients": {
+        "calories": 370,
+        "protein": 9,
+        "carbs": 72,
+        "fat": 4.2,
+        "fiber": 12.8
+      },
+      "color": "#E2583E",
+      "image": "/images/product_peri_peri.png"
+    },
+    {
+      "id": "prod_4",
+      "name": "Gourmet White Cheddar Makhana",
+      "description": "Indulge in the cheesy goodness! Roasted fox nuts seasoned with real, premium aged white cheddar cheese for a smooth, melt-in-your-mouth flavor.",
+      "price": 5.99,
+      "category": "Savory",
+      "flavor": "Cheese",
+      "stock": 110,
+      "rating": 4.7,
+      "nutrients": {
+        "calories": 385,
+        "protein": 10.2,
+        "carbs": 70,
+        "fat": 5.8,
+        "fiber": 11.5
+      },
+      "color": "#F3E5AB",
+      "image": "/images/product_cheddar.png"
+    },
+    {
+      "id": "prod_5",
+      "name": "Golden Butter Caramel Makhana",
+      "description": "A sweet sensation. Glazed with a crispy coating of artisanal melted brown sugar, butter, and a pinch of sea salt. Sweet snacking done right.",
+      "price": 6.49,
+      "category": "Sweet",
+      "flavor": "Caramel",
+      "stock": 70,
+      "rating": 4.9,
+      "nutrients": {
+        "calories": 410,
+        "protein": 7.5,
+        "carbs": 82,
+        "fat": 6.5,
+        "fiber": 10
+      },
+      "color": "#C19A6B",
+      "image": "/images/product_caramel.png"
+    },
+    {
+      "id": "prod_6",
+      "name": "Sour Cream & Onion Zest Makhana",
+      "description": "A classic savory combo. Crispy fox nuts tossed in smooth, tangy sour cream seasoning and garnished with fine chives and wild spring onion flavor.",
+      "price": 5.49,
+      "category": "Savory",
+      "flavor": "Cream-Onion",
+      "stock": 105,
+      "rating": 4.5,
+      "nutrients": {
+        "calories": 375,
+        "protein": 8.5,
+        "carbs": 75,
+        "fat": 4,
+        "fiber": 13.2
+      },
+      "color": "#E9FFDB",
+      "image": "/images/product_sour_cream.png"
+    }
+  ],
+  "orders": [],
+  "recipes": [
+    {
+      "id": "rec_1",
+      "name": "Royal Creamy Makhana Kheer",
+      "description": "A luxurious and healthy twist to the traditional Indian rice pudding. Made with slow-reduced low-fat milk, roasted ground makhana, saffron, cardamom, and garnished with pistachios.",
+      "prepTime": "10 mins",
+      "cookTime": "25 mins",
+      "difficulty": "Easy",
+      "servings": 4,
+      "image": "/images/recipe_kheer.png",
+      "ingredients": [
+        {
+          "name": "Roasted Makhana (Fox Nuts)",
+          "amount": 50,
+          "unit": "g"
+        },
+        {
+          "name": "Milk (or Almond Milk for vegan)",
+          "amount": 1,
+          "unit": "L"
+        },
+        {
+          "name": "Jaggery powder or Maple Syrup",
+          "amount": 80,
+          "unit": "g"
+        },
+        {
+          "name": "Cardamom Powder",
+          "amount": 0.5,
+          "unit": "tsp"
+        },
+        {
+          "name": "Saffron Strands",
+          "amount": 8,
+          "unit": "pieces"
+        },
+        {
+          "name": "Sliced Almonds & Pistachios",
+          "amount": 2,
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "Lightly crush 3/4 of the roasted makhana, keeping the remaining 1/4 whole.",
+        "Bring the milk to a boil in a heavy-bottomed pan. Add saffron strands and simmer on low heat for 10 minutes until it slightly thickens.",
+        "Add both crushed and whole makhana to the milk. Cook on medium-low heat for 12-15 minutes, stirring occasionally, until the makhana becomes soft and absorbs the milk flavor.",
+        "Stir in the cardamom powder and sliced nuts. Cook for 2 more minutes.",
+        "Turn off the heat. Let it cool slightly, then stir in the jaggery powder or sweetener of choice. (Adding jaggery to boiling milk can curdle it).",
+        "Serve warm or chilled, garnished with extra saffron and nuts."
+      ],
+      "nutrients": {
+        "calories": 180,
+        "protein": 6.5,
+        "carbs": 28,
+        "fat": 4.5
+      }
+    },
+    {
+      "id": "rec_2",
+      "name": "Tangy Sprouts & Makhana Chaat",
+      "description": "An incredibly fresh, crunchy, and oil-free high-protein salad/chaat. Packed with sprouts, juicy cucumbers, tomatoes, seasoned with zesty lemon juice and mint chutney.",
+      "prepTime": "15 mins",
+      "cookTime": "5 mins",
+      "difficulty": "Easy",
+      "servings": 2,
+      "image": "/images/recipe_chaat.png",
+      "ingredients": [
+        {
+          "name": "Roasted Crispy Makhana",
+          "amount": 40,
+          "unit": "g"
+        },
+        {
+          "name": "Boiled Green Moong Sprouts",
+          "amount": 100,
+          "unit": "g"
+        },
+        {
+          "name": "Finely Chopped Onion",
+          "amount": 1,
+          "unit": "medium"
+        },
+        {
+          "name": "Chopped Tomatoes & Cucumber",
+          "amount": 120,
+          "unit": "g"
+        },
+        {
+          "name": "Mint & Coriander Chutney",
+          "amount": 2,
+          "unit": "tbsp"
+        },
+        {
+          "name": "Chaat Masala & Lemon Juice",
+          "amount": 1,
+          "unit": "tsp"
+        },
+        {
+          "name": "Pomegranate seeds for garnish",
+          "amount": 2,
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "In a large mixing bowl, combine the boiled moong sprouts, chopped onions, tomatoes, and cucumbers.",
+        "Drizzle the mint-coriander chutney and fresh lemon juice over the mixture.",
+        "Sprinkle the chaat masala and salt according to taste. Toss everything gently to mix.",
+        "Just before serving, add the crispy roasted makhana and mix quickly so the makhana stays crunchy.",
+        "Garnish with fresh coriander leaves, pomegranate seeds, and a pinch of black salt. Enjoy immediately!"
+      ],
+      "nutrients": {
+        "calories": 140,
+        "protein": 8,
+        "carbs": 24,
+        "fat": 1.2
+      }
+    },
+    {
+      "id": "rec_3",
+      "name": "Mughlai Makhana Peas Curry",
+      "description": "A rich, creamy, and flavorful main course curry. Lightly roasted makhana and tender green peas simmered in a velvet tomato, cashew, and aromatic onion-based gravy.",
+      "prepTime": "15 mins",
+      "cookTime": "20 mins",
+      "difficulty": "Medium",
+      "servings": 3,
+      "image": "/images/recipe_curry.png",
+      "ingredients": [
+        {
+          "name": "Roasted Whole Makhana",
+          "amount": 60,
+          "unit": "g"
+        },
+        {
+          "name": "Boiled Green Peas",
+          "amount": 150,
+          "unit": "g"
+        },
+        {
+          "name": "Onion Paste & Tomato Puree",
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "name": "Soaked Cashew Paste",
+          "amount": 3,
+          "unit": "tbsp"
+        },
+        {
+          "name": "Ginger-Garlic Paste",
+          "amount": 1,
+          "unit": "tsp"
+        },
+        {
+          "name": "Garam Masala, Turmeric & Chili Powder",
+          "amount": 1,
+          "unit": "tsp"
+        },
+        {
+          "name": "Coriander leaves & Cooking Oil",
+          "amount": 2,
+          "unit": "tbsp"
+        }
+      ],
+      "instructions": [
+        "Heat 1 tbsp of oil in a pan and sauté the ginger-garlic paste and onion paste until golden brown.",
+        "Add tomato puree and cook until the oil starts separating from the masala.",
+        "Add turmeric, red chili powder, coriander powder, and cashew paste. Cook on low heat for 3-4 minutes, stirring continuously.",
+        "Pour in 1.5 cups of warm water to form a smooth gravy. Bring it to a gentle boil.",
+        "Add the boiled green peas and roasted makhana. Simmer covered for 5-7 minutes so the makhana absorbs the rich gravy.",
+        "Stir in garam masala and heavy cream (optional). Garnish with fresh coriander and serve warm with Roti or Naan."
+      ],
+      "nutrients": {
+        "calories": 260,
+        "protein": 7.8,
+        "carbs": 32,
+        "fat": 11.5
+      }
+    }
+  ]
+}

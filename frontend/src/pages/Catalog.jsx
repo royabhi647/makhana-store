@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { BarChart3, ShoppingCart, Star, X, Loader2 } from 'lucide-react';
 // Default backup products in case API is offline
 const BACKUP_PRODUCTS = [
   {
@@ -195,7 +196,13 @@ export default function Catalog() {
       {/* Product Grid */}
       {loading ? (
         <div style={{ textAlign: 'center', padding: '60px' }}>
-          <div className="animate-spin-slow" style={{ fontSize: '2.5rem', display: 'inline-block' }}>🌀</div>
+          <motion.div 
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+            style={{ display: 'inline-block', color: 'var(--primary)' }}
+          >
+            <Loader2 size={40} />
+          </motion.div>
           <p style={{ marginTop: '12px', color: 'var(--text-muted)' }}>Loading premium products...</p>
         </div>
       ) : sortedProducts.length === 0 ? (
@@ -262,7 +269,7 @@ export default function Catalog() {
                 <div>
                   <h3 style={{ fontSize: '1.2rem', color: 'var(--text-dark)', marginBottom: '4px' }}>{p.name}</h3>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem' }}>
-                    <span style={{ color: '#FFB300' }}>★</span>
+                    <Star size={14} fill="#FFB300" stroke="none" />
                     <span style={{ fontWeight: 600 }}>{p.rating}</span>
                     <span style={{ color: 'var(--text-muted)' }}>(Review Pack)</span>
                   </div>
@@ -286,21 +293,23 @@ export default function Catalog() {
                   paddingTop: '16px'
                 }}>
                   <span style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-dark)' }}>${p.price.toFixed(2)}</span>
-                  <div style={{ display: 'flex', gap: '8px' }}>
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                     <button
                       onClick={() => setSelectedProduct(p)}
                       className="btn btn-outline"
-                      style={{ padding: '8px 12px', fontSize: '0.8rem', borderRadius: '8px' }}
+                      style={{ padding: '8px 12px', fontSize: '0.8rem', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}
                     >
-                      Nutrients 📊
+                      Nutrients
+                      <BarChart3 size={14} />
                     </button>
                     <motion.button
                       whileTap={{ scale: 0.9 }}
                       onClick={() => handleAddToCart(p)}
                       className="btn btn-primary"
-                      style={{ padding: '8px 16px', fontSize: '0.8rem', borderRadius: '8px' }}
+                      style={{ padding: '8px 16px', fontSize: '0.8rem', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}
                     >
-                      Add +
+                      Add
+                      <ShoppingCart size={14} />
                     </motion.button>
                   </div>
                 </div>
@@ -358,12 +367,17 @@ export default function Catalog() {
                   right: '20px',
                   border: 'none',
                   background: 'none',
-                  fontSize: '1.25rem',
                   cursor: 'pointer',
-                  color: 'var(--text-muted)'
+                  color: 'var(--text-muted)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '4px',
+                  borderRadius: '50%'
                 }}
+                className="btn-icon"
               >
-                ✕
+                <X size={18} />
               </button>
               <span className="badge badge-primary" style={{ marginBottom: '8px' }}>{selectedProduct.category} Flavor</span>
               <h3 style={{ fontSize: '1.6rem', color: 'var(--text-dark)', marginBottom: '12px' }}>{selectedProduct.name}</h3>
@@ -405,9 +419,10 @@ export default function Catalog() {
                     setSelectedProduct(null);
                   }}
                   className="btn btn-primary"
-                  style={{ padding: '12px 28px' }}
+                  style={{ padding: '12px 28px', display: 'flex', alignItems: 'center', gap: '8px' }}
                 >
-                  Add to Cart 🛒
+                  Add to Cart
+                  <ShoppingCart size={18} />
                 </motion.button>
               </div>
             </motion.div>

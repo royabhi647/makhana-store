@@ -3,6 +3,8 @@
 import React, { useState, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
+import { CreditCard, Sparkles, Package, ArrowLeft, CheckCircle2, ChevronRight } from 'lucide-react';
+
 export default function Checkout({ navigateTo }) {
   const { userInfo } = useContext(AuthContext);
   const {
@@ -28,6 +30,7 @@ export default function Checkout({ navigateTo }) {
   const [cardCvv, setCardCvv] = useState('123');
   const [placedOrder, setPlacedOrder] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+
   const handleShippingSubmit = (e) => {
     e.preventDefault();
     if (!address || !city || !postalCode || !country) {
@@ -37,10 +40,12 @@ export default function Checkout({ navigateTo }) {
     setShippingAddress({ address, city, postalCode, country });
     setStep(2);
   };
+
   const handlePaymentSubmit = (e) => {
     e.preventDefault();
     setStep(3);
   };
+
   const handlePlaceOrder = async () => {
     setSubmitting(true);
     const orderData = {
@@ -118,6 +123,7 @@ export default function Checkout({ navigateTo }) {
       setSubmitting(false);
     }
   };
+
   return (
     <div className="container" style={{ padding: '40px 24px 80px', maxWidth: '800px' }}>
       
@@ -186,10 +192,11 @@ export default function Checkout({ navigateTo }) {
           ))}
         </div>
       )}
+
       {/* Step 1: Shipping Address */}
       {step === 1 && (
         <div className="card glass animate-fade" style={{ padding: '40px', backgroundColor: 'var(--bg-card)' }}>
-          <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '1.4rem', marginBottom: '24px' }}>Delivery Address</h3>
+          <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '1.4rem', marginBottom: '24px', margin: '0 0 24px' }}>Delivery Address</h3>
           <form onSubmit={handleShippingSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <div className="form-group">
               <label className="form-label">Street Address</label>
@@ -237,16 +244,22 @@ export default function Checkout({ navigateTo }) {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '14px', marginTop: '10px' }}>
-              Continue to Payment 💳
+            <button 
+              type="submit" 
+              className="btn btn-primary" 
+              style={{ width: '100%', padding: '14px', marginTop: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+            >
+              Continue to Payment
+              <CreditCard size={18} />
             </button>
           </form>
         </div>
       )}
+
       {/* Step 2: Payment Details */}
       {step === 2 && (
         <div className="card glass animate-fade" style={{ padding: '40px', backgroundColor: 'var(--bg-card)' }}>
-          <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '1.4rem', marginBottom: '24px' }}>Secure Payment</h3>
+          <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '1.4rem', marginBottom: '24px', margin: '0 0 24px' }}>Secure Payment</h3>
           <form onSubmit={handlePaymentSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             
             {/* Payment Method Selector */}
@@ -263,7 +276,8 @@ export default function Checkout({ navigateTo }) {
                 backgroundColor: 'var(--primary-light)'
               }}>
                 <input type="radio" checked name="payMethod" onChange={() => setPaymentMethod('Card')} />
-                <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>💳 Credit/Debit Card</span>
+                <CreditCard size={18} style={{ color: 'var(--primary-dark)' }} />
+                <span style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--text-dark)' }}>Credit/Debit Card</span>
               </label>
             </div>
             <div className="form-group">
@@ -313,36 +327,49 @@ export default function Checkout({ navigateTo }) {
               </div>
             </div>
             <div style={{ display: 'flex', gap: '12px', marginTop: '10px' }}>
-              <button type="button" onClick={() => setStep(1)} className="btn btn-outline" style={{ flex: 1, padding: '12px' }}>
+              <button 
+                type="button" 
+                onClick={() => setStep(1)} 
+                className="btn btn-outline" 
+                style={{ flex: 1, padding: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+              >
+                <ArrowLeft size={16} />
                 Back
               </button>
-              <button type="submit" className="btn btn-primary" style={{ flex: 2, padding: '12px' }}>
+              <button 
+                type="submit" 
+                className="btn btn-primary" 
+                style={{ flex: 2, padding: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+              >
                 Verify & Review Order
+                <ChevronRight size={16} />
               </button>
             </div>
           </form>
         </div>
       )}
+
       {/* Step 3: Final Review */}
       {step === 3 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }} className="animate-fade">
           
           <div className="card glass" style={{ padding: '32px', backgroundColor: 'var(--bg-card)' }}>
-            <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '1.4rem', marginBottom: '20px' }}>Review Details</h3>
+            <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '1.4rem', marginBottom: '20px', margin: '0 0 20px' }}>Review Details</h3>
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '0.92rem' }}>
               <div>
-                <h4 style={{ fontWeight: 600, color: 'var(--text-dark)' }}>Shipping Address</h4>
-                <p style={{ color: 'var(--text-muted)' }}>{address}, {city}, {postalCode}, {country}</p>
+                <h4 style={{ fontWeight: 600, color: 'var(--text-dark)', margin: '0 0 4px' }}>Shipping Address</h4>
+                <p style={{ color: 'var(--text-muted)', margin: 0 }}>{address}, {city}, {postalCode}, {country}</p>
               </div>
               <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '12px' }}>
-                <h4 style={{ fontWeight: 600, color: 'var(--text-dark)' }}>Payment Info</h4>
-                <p style={{ color: 'var(--text-muted)' }}>Card ending in {cardNumber.substring(cardNumber.length - 4)}</p>
+                <h4 style={{ fontWeight: 600, color: 'var(--text-dark)', margin: '0 0 4px' }}>Payment Info</h4>
+                <p style={{ color: 'var(--text-muted)', margin: 0 }}>Card ending in {cardNumber.substring(cardNumber.length - 4)}</p>
               </div>
             </div>
           </div>
+
           <div className="card glass" style={{ padding: '32px', backgroundColor: 'var(--bg-card)' }}>
-            <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '1.4rem', marginBottom: '16px' }}>Items Summary</h3>
+            <h3 style={{ fontFamily: 'var(--font-title)', fontSize: '1.4rem', marginBottom: '16px', margin: '0 0 16px' }}>Items Summary</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {cartItems.map((item) => (
                 <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem' }}>
@@ -387,6 +414,7 @@ export default function Checkout({ navigateTo }) {
               </div>
             </div>
           </div>
+
           <div style={{ display: 'flex', gap: '12px' }}>
             <button onClick={() => setStep(2)} className="btn btn-outline" style={{ flex: 1, padding: '14px' }}>
               Modify Payment
@@ -395,13 +423,15 @@ export default function Checkout({ navigateTo }) {
               onClick={handlePlaceOrder}
               disabled={submitting}
               className="btn btn-primary"
-              style={{ flex: 2, padding: '14px' }}
+              style={{ flex: 2, padding: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
             >
+              <CreditCard size={18} />
               {submitting ? 'Placing Order...' : `Pay & Place Order ($${totalPrice.toFixed(2)})`}
             </button>
           </div>
         </div>
       )}
+
       {/* Step 4: Success Screen */}
       {step === 4 && placedOrder && (
         <div className="card glass animate-fade" style={{
@@ -414,9 +444,9 @@ export default function Checkout({ navigateTo }) {
           gap: '24px',
           boxShadow: 'var(--shadow-lg)'
         }}>
-          <span style={{ fontSize: '5rem' }}>🎉</span>
-          <h2 style={{ fontSize: '2rem', color: 'var(--secondary)' }}>Order Confirmed!</h2>
-          <p style={{ color: 'var(--text-muted)', maxWidth: '500px' }}>
+          <CheckCircle2 size={72} style={{ color: 'var(--secondary)' }} />
+          <h2 style={{ fontSize: '2.5rem', color: 'var(--secondary)', margin: 0, fontFamily: 'var(--font-title)' }}>Order Confirmed!</h2>
+          <p style={{ color: 'var(--text-muted)', maxWidth: '500px', margin: 0, fontSize: '1.05rem', lineHeight: '1.6' }}>
             Thank you for shopping at Makhana Bliss, <b>{cardHolder}</b>. Your order <b>#{placedOrder._id}</b> has been placed successfully and paid via credit card.
           </p>
           <div className="glass" style={{
@@ -426,18 +456,24 @@ export default function Checkout({ navigateTo }) {
             width: '100%',
             maxWidth: '460px',
             fontSize: '0.9rem',
-            border: '1px solid var(--border-color)'
+            border: '1px solid var(--border-color)',
+            backgroundColor: 'rgba(255,255,255,0.4)'
           }}>
-            <h4 style={{ fontFamily: 'var(--font-title)', marginBottom: '8px', color: 'var(--text-dark)' }}>Shipment Details</h4>
-            <p>Street: {address}</p>
-            <p>Location: {city}, {postalCode}, {country}</p>
-            <p style={{ marginTop: '8px', borderTop: '1px solid var(--border-color)', paddingTop: '8px' }}>
-              Status: 🟡 <b>Paid, Preparing Shipment</b>
+            <h4 style={{ fontFamily: 'var(--font-title)', marginBottom: '12px', color: 'var(--text-dark)', margin: '0 0 12px', borderBottom: '1px solid var(--border-color)', paddingBottom: '6px' }}>Shipment Details</h4>
+            <p style={{ margin: '4px 0' }}>Street: {address}</p>
+            <p style={{ margin: '4px 0' }}>Location: {city}, {postalCode}, {country}</p>
+            <p style={{ marginTop: '12px', borderTop: '1px solid var(--border-color)', paddingTop: '12px', display: 'flex', alignItems: 'center', gap: '6px', margin: '12px 0 0' }}>
+              Status: <span style={{ display: 'inline-block', width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#FFB300' }}></span> <b>Paid, Preparing Shipment</b>
             </p>
           </div>
-          <div style={{ display: 'flex', gap: '12px', width: '100%', maxWidth: '400px' }}>
-            <button onClick={() => navigateTo('profile')} className="btn btn-primary" style={{ flex: 1, padding: '12px' }}>
-              Track Orders 📦
+          <div style={{ display: 'flex', gap: '12px', width: '100%', maxWidth: '400px', marginTop: '10px' }}>
+            <button 
+              onClick={() => navigateTo('profile')} 
+              className="btn btn-primary" 
+              style={{ flex: 1, padding: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+            >
+              Track Orders
+              <Package size={16} />
             </button>
             <button onClick={() => navigateTo('home')} className="btn btn-outline" style={{ flex: 1, padding: '12px', backgroundColor: 'white' }}>
               Back Home
@@ -448,4 +484,3 @@ export default function Checkout({ navigateTo }) {
     </div>
   );
 }
-

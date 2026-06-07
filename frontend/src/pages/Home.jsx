@@ -5,7 +5,7 @@ import FlavorWheel from '../components/FlavorWheel';
 import Timeline from '../components/Timeline';
 import { CartContext } from '../context/CartContext';
 import { motion } from 'framer-motion';
-import { Zap, Flame, Leaf, Heart, ArrowRight } from 'lucide-react';
+import { Zap, Leaf, ArrowRight, Dumbbell, HeartPulse, ShieldAlert, Crown, ShoppingBag, Sparkles } from 'lucide-react';
 export default function Home({ navigateTo }) {
   const { addToCart } = useContext(CartContext);
   const handleQuickAdd = (flavor) => {
@@ -71,9 +71,9 @@ export default function Home({ navigateTo }) {
               animate={{ scale: 1 }}
               transition={{ repeat: Infinity, repeatType: 'reverse', duration: 1.5 }}
               className="badge badge-secondary" 
-              style={{ width: 'fit-content' }}
+              style={{ width: 'fit-content', display: 'flex', alignItems: 'center', gap: '6px' }}
             >
-              👑 Gourmet Superfood Snack
+              <Crown size={14} style={{ color: 'var(--secondary-dark)' }} /> Gourmet Superfood Snack
             </motion.span>
             <h1 style={{
               fontSize: 'clamp(2.5rem, 5vw, 4rem)',
@@ -94,24 +94,26 @@ export default function Home({ navigateTo }) {
             }}>
               Experience premium grade, hand-harvested lotus seeds. Slow-roasted in rich olive oil and coated with natural gourmet spices. Low calorie, high protein, and 100% gluten-free.
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '10px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '10px', alignItems: 'center' }}>
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigateTo('catalog')} 
                 className="btn btn-primary" 
-                style={{ padding: '16px 36px', fontSize: '1rem' }}
+                style={{ padding: '16px 36px', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}
               >
-                Explore Flavors 🛍️
+                Explore Flavors
+                <ShoppingBag size={18} />
               </motion.button>
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigateTo('customizer')} 
                 className="btn btn-outline" 
-                style={{ padding: '16px 36px', fontSize: '1rem', backgroundColor: 'white' }}
+                style={{ padding: '16px 36px', fontSize: '1rem', backgroundColor: 'white', display: 'flex', alignItems: 'center', gap: '8px' }}
               >
-                Mix Your Own Bowl 🥣
+                Mix Your Own Bowl
+                <Sparkles size={18} style={{ color: 'var(--primary)' }} />
               </motion.button>
             </div>
           </motion.div>
@@ -176,13 +178,17 @@ export default function Home({ navigateTo }) {
             transition={{ duration: 0.5, delay: 0.1 }}
             whileHover={{ y: -8, boxShadow: 'var(--shadow-lg)', borderColor: 'var(--primary)' }}
             className="card" 
-            style={{ padding: '32px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}
+            style={{ padding: '24px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', overflow: 'hidden' }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'var(--primary-light)', color: 'var(--primary-dark)' }}>
-              <Zap size={28} strokeWidth={2.5} />
+            <div style={{ width: '100%', height: '180px', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border-color)', backgroundColor: '#FAFAF8' }}>
+              <img 
+                src="/images/benefit_protein.png" 
+                alt="High in Protein" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
             </div>
-            <h3 style={{ fontSize: '1.3rem', color: 'var(--text-dark)' }}>High in Protein</h3>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+            <h3 style={{ fontSize: '1.3rem', color: 'var(--text-dark)', margin: 0 }}>High in Protein</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
               Contains significant plant-based protein (about 9.5g per 100g) which helps repair cells and boosts muscle growth.
             </p>
           </motion.div>
@@ -194,13 +200,17 @@ export default function Home({ navigateTo }) {
             transition={{ duration: 0.5, delay: 0.2 }}
             whileHover={{ y: -8, boxShadow: 'var(--shadow-lg)', borderColor: 'var(--primary)' }}
             className="card" 
-            style={{ padding: '32px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}
+            style={{ padding: '24px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', overflow: 'hidden' }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'var(--primary-light)', color: 'var(--primary-dark)' }}>
-              <Flame size={28} strokeWidth={2.5} />
+            <div style={{ width: '100%', height: '180px', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border-color)', backgroundColor: '#FAFAF8' }}>
+              <img 
+                src="/images/benefit_low_calorie.png" 
+                alt="Low Calorie Snacking" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
             </div>
-            <h3 style={{ fontSize: '1.3rem', color: 'var(--text-dark)' }}>Low Calorie Snacking</h3>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+            <h3 style={{ fontSize: '1.3rem', color: 'var(--text-dark)', margin: 0 }}>Low Calorie Snacking</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
               Extremely low in calories and saturated fats. A single bowl satisfies hunger without adding heavy calorie loads.
             </p>
           </motion.div>
@@ -212,13 +222,17 @@ export default function Home({ navigateTo }) {
             transition={{ duration: 0.5, delay: 0.3 }}
             whileHover={{ y: -8, boxShadow: 'var(--shadow-lg)', borderColor: 'var(--primary)' }}
             className="card" 
-            style={{ padding: '32px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}
+            style={{ padding: '24px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', overflow: 'hidden' }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'var(--primary-light)', color: 'var(--primary-dark)' }}>
-              <Leaf size={28} strokeWidth={2.5} />
+            <div style={{ width: '100%', height: '180px', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border-color)', backgroundColor: '#FAFAF8' }}>
+              <img 
+                src="/images/benefit_gluten_free.png" 
+                alt="Gluten-Free & Alkaline" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
             </div>
-            <h3 style={{ fontSize: '1.3rem', color: 'var(--text-dark)' }}>Gluten-Free & Alkaline</h3>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+            <h3 style={{ fontSize: '1.3rem', color: 'var(--text-dark)', margin: 0 }}>Gluten-Free & Alkaline</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
               Naturally gluten-free and highly alkaline, making it gentle on the stomach and supporting healthy gut digestion.
             </p>
           </motion.div>
@@ -230,13 +244,17 @@ export default function Home({ navigateTo }) {
             transition={{ duration: 0.5, delay: 0.4 }}
             whileHover={{ y: -8, boxShadow: 'var(--shadow-lg)', borderColor: 'var(--primary)' }}
             className="card" 
-            style={{ padding: '32px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}
+            style={{ padding: '24px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', overflow: 'hidden' }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '64px', height: '64px', borderRadius: '50%', backgroundColor: 'var(--primary-light)', color: 'var(--primary-dark)' }}>
-              <Heart size={28} strokeWidth={2.5} />
+            <div style={{ width: '100%', height: '180px', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border-color)', backgroundColor: '#FAFAF8' }}>
+              <img 
+                src="/images/benefit_antioxidants.png" 
+                alt="Antioxidant Rich" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
             </div>
-            <h3 style={{ fontSize: '1.3rem', color: 'var(--text-dark)' }}>Antioxidant Rich</h3>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+            <h3 style={{ fontSize: '1.3rem', color: 'var(--text-dark)', margin: 0 }}>Antioxidant Rich</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6', margin: 0 }}>
               Loaded with flavonoids (like kaempferol) which fight free radicals, reduce inflammation, and possess anti-aging properties.
             </p>
           </motion.div>
@@ -248,10 +266,12 @@ export default function Home({ navigateTo }) {
       </section>
       {/* Custom Mix Banner Section */}
       <section style={{
-        backgroundColor: 'var(--secondary)',
+        background: 'linear-gradient(rgba(44, 58, 47, 0.94), rgba(44, 58, 47, 0.90)), url("/images/hero_bg.png") center/cover no-repeat',
         color: 'var(--text-light)',
-        padding: '80px 24px',
-        overflow: 'hidden'
+        padding: '100px 24px',
+        overflow: 'hidden',
+        borderTop: '1px solid var(--border-color)',
+        borderBottom: '1px solid var(--border-color)'
       }}>
         <div className="container" style={{
           display: 'flex',
@@ -268,8 +288,8 @@ export default function Home({ navigateTo }) {
             style={{ flex: '1 1 500px', display: 'flex', flexDirection: 'column', gap: '16px' }}
           >
             <span className="badge" style={{ backgroundColor: 'var(--primary-light)', color: 'var(--primary-dark)', width: 'fit-content', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Zap size={12} strokeWidth={2.5} />
-              Interactive Feature
+              <Sparkles size={12} strokeWidth={2.5} style={{ color: 'var(--primary)' }} />
+              Interactive Blender
             </span>
             <h2 style={{ fontSize: '2.5rem', color: 'var(--text-light)', fontFamily: 'var(--font-title)' }}>
               Create Your Signature Bowl
@@ -299,51 +319,57 @@ export default function Home({ navigateTo }) {
               justifyContent: 'center'
             }}
           >
-            {/* Visual jar illustration */}
             <motion.div 
-              animate={{ y: [0, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+              animate={{ y: [0, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
               style={{
-                width: '200px',
-                height: '240px',
-                borderRadius: '24px 24px 10px 10px',
-                border: '6px solid rgba(255,255,255,0.2)',
-                position: 'relative',
-                backgroundColor: 'rgba(255,255,255,0.05)',
+                width: '100%',
+                maxWidth: '320px',
+                borderRadius: '24px',
+                background: 'rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                padding: '16px',
+                boxShadow: 'var(--shadow-xl)',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'flex-end',
-                padding: '16px',
-                overflow: 'hidden'
+                gap: '12px'
               }}
             >
-              {/* Jar Cap */}
               <div style={{
-                position: 'absolute',
-                top: 0,
-                left: '25px',
-                width: '138px',
-                height: '16px',
-                backgroundColor: 'var(--primary-light)',
-                borderRadius: '8px 8px 0 0'
-              }} />
-              {/* Colored layered mix fills */}
-              <div style={{ height: '35%', width: '100%', backgroundColor: 'var(--primary)', borderRadius: '4px', margin: '2px 0', opacity: 0.9 }} />
-              <div style={{ height: '25%', width: '100%', backgroundColor: 'var(--accent)', borderRadius: '4px', margin: '2px 0', opacity: 0.9 }} />
-              <div style={{ height: '30%', width: '100%', backgroundColor: '#FFFFFF', borderRadius: '4px', margin: '2px 0', opacity: 0.8 }} />
-              <p style={{
-                position: 'absolute',
-                top: '40%',
-                left: 0,
                 width: '100%',
-                textAlign: 'center',
-                color: 'var(--text-dark)',
-                backgroundColor: 'rgba(255,255,255,0.9)',
-                padding: '4px 0',
-                fontWeight: 'bold',
-                fontSize: '0.8rem',
-                fontFamily: 'var(--font-title)'
-              }}>CUSTOM BLEND</p>
+                height: '220px',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                position: 'relative'
+              }}>
+                <img 
+                  src="/images/timeline_seasoning.png" 
+                  alt="Custom Signature Bowl" 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
+                <span className="badge badge-accent" style={{
+                  position: 'absolute',
+                  top: '12px',
+                  right: '12px',
+                  fontWeight: 'bold',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
+                }}>
+                  Your Mix
+                </span>
+              </div>
+              <div>
+                <h4 style={{ margin: 0, fontSize: '1.1rem', color: 'var(--text-light)', fontWeight: 700 }}>
+                  Signature Crunch Bowl
+                </h4>
+                <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)', lineHeight: '1.4' }}>
+                  A balanced blend of classic seasoning, cheddar cheese, and a dash of spice.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </div>

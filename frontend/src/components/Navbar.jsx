@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ShoppingBag, Package, Moon, Sun, ShoppingCart, User, LogOut, ChevronDown, Menu, X, Disc } from 'lucide-react';
 export default function Navbar({ currentRoute, navigateTo }) {
   const { userInfo, logout } = useContext(AuthContext);
   const { cartItems } = useContext(CartContext);
@@ -50,11 +51,7 @@ export default function Navbar({ currentRoute, navigateTo }) {
           color: 'var(--primary-dark)',
           letterSpacing: '-0.5px'
         }}>
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--primary)' }}>
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-            <path d="M2 12h20" />
-          </svg>
+          <Disc size={28} style={{ color: 'var(--primary)', transform: 'rotate(45deg)' }} />
           <span style={{ color: 'var(--text-dark)' }}>Makhana</span>
           <span style={{ color: 'var(--primary)', fontWeight: '500' }}>Bliss</span>
         </a>
@@ -92,12 +89,10 @@ export default function Navbar({ currentRoute, navigateTo }) {
                     }}
                   >
                     Shop
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{
+                    <ChevronDown size={14} style={{
                       transform: shopDropdownOpen ? 'rotate(180deg)' : 'none',
                       transition: 'transform var(--transition-fast)'
-                    }}>
-                      <path d="m6 9 6 6 6-6"/>
-                    </svg>
+                    }} />
                   </a>
 
                   {/* Dropdown menu containing actual image cards for Catalog and Pantry */}
@@ -111,7 +106,7 @@ export default function Navbar({ currentRoute, navigateTo }) {
                         className="glass" 
                         style={{
                           position: 'absolute',
-                          top: '100%',
+                          top: 'calc(100% - 8px)',
                           left: '50%',
                           width: '340px',
                           padding: '16px',
@@ -151,9 +146,9 @@ export default function Navbar({ currentRoute, navigateTo }) {
                             />
                           </div>
                           <div>
-                            <h4 style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-dark)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <h4 style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-dark)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
                               Catalog 
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                              <ShoppingBag size={14} style={{ color: 'var(--primary)' }} />
                             </h4>
                             <p style={{ margin: '2px 0 0', fontSize: '0.75rem', color: 'var(--text-muted)' }}>Browse organic slow-roasted flavors</p>
                           </div>
@@ -185,9 +180,9 @@ export default function Navbar({ currentRoute, navigateTo }) {
                             />
                           </div>
                           <div>
-                            <h4 style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-dark)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <h4 style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-dark)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
                               Pantry
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9h18M3 15h18M3 21h18M3 3h18"/></svg>
+                              <Package size={14} style={{ color: 'var(--primary)' }} />
                             </h4>
                             <p style={{ margin: '2px 0 0', fontSize: '0.75rem', color: 'var(--text-muted)' }}>Stock up on healthy popped blends</p>
                           </div>
@@ -218,10 +213,7 @@ export default function Navbar({ currentRoute, navigateTo }) {
                   }}
                 >
                   {link.label === 'Custom Bowl' && (
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--primary-dark)' }}>
-                      <path d="M3 12a9 9 0 0 0 18 0H3Z" />
-                      <path d="M21 12c.3 0 .5-.2.5-.5V10c0-.6-.4-1-1-1H3.5c-.6 0-1 .4-1 1v1.5c0 .3.2.5.5.5" />
-                    </svg>
+                    <Disc size={16} style={{ color: 'var(--primary)' }} />
                   )}
                   {link.label}
                   {currentRoute === link.route && (
@@ -260,13 +252,9 @@ export default function Navbar({ currentRoute, navigateTo }) {
           title="Toggle Dark Mode"
           >
             {darkMode ? (
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-              </svg>
+              <Sun size={20} />
             ) : (
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-              </svg>
+              <Moon size={20} />
             )}
           </button>
           {/* Cart Trigger */}
@@ -281,11 +269,7 @@ export default function Navbar({ currentRoute, navigateTo }) {
               alignItems: 'center'
             }}
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-              <path d="M3 6h18" />
-              <path d="M16 10a4 4 0 0 1-8 0" />
-            </svg>
+            <ShoppingCart size={22} />
             {cartCount > 0 && (
               <span className="animate-fade" style={{
                 position: 'absolute',
@@ -326,10 +310,7 @@ export default function Navbar({ currentRoute, navigateTo }) {
                   borderRadius: '20px'
                 }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
+                <User size={16} />
                 {userInfo.name.split(' ')[0]}
               </a>
               {userInfo.isAdmin && (
@@ -382,13 +363,9 @@ export default function Navbar({ currentRoute, navigateTo }) {
             }}
           >
             {mobileMenuOpen ? (
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M18 6 6 18M6 6l12 12"/>
-              </svg>
+              <X size={24} />
             ) : (
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path d="M4 6h16M4 12h16M4 18h16"/>
-              </svg>
+              <Menu size={24} />
             )}
           </button>
         </div>

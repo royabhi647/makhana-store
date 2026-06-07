@@ -50,10 +50,19 @@ export default function App() {
       case 'customizer':
         return (
           <div className="container" style={{ padding: '40px 24px 80px' }}>
-            <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-              <span className="badge badge-primary" style={{ marginBottom: '8px' }}>Mix Lab</span>
-              <h2 style={{ fontSize: '2.2rem', color: 'var(--text-dark)' }}>Mix Your Own Bowl</h2>
-              <p style={{ color: 'var(--text-muted)' }}>Drag the sliders to adjust flavor shares. Name your mix and buy your custom recipe.</p>
+            <div style={{
+              background: 'linear-gradient(rgba(44, 58, 47, 0.94), rgba(44, 58, 47, 0.90)), url("/images/hero_bg.png") center/cover no-repeat',
+              color: 'white',
+              padding: '60px 24px',
+              borderRadius: '24px',
+              textAlign: 'center',
+              marginBottom: '40px',
+              border: '1px solid var(--border-color)',
+              boxShadow: 'var(--shadow-md)'
+            }}>
+              <span className="badge" style={{ backgroundColor: 'var(--primary-light)', color: 'var(--primary-dark)', marginBottom: '12px', fontWeight: 'bold' }}>Mix Lab</span>
+              <h2 style={{ fontSize: '2.5rem', color: 'white', fontFamily: 'var(--font-title)', margin: 0 }}>Mix Your Own Bowl</h2>
+              <p style={{ color: 'rgba(255, 255, 255, 0.8)', margin: '8px 0 0', fontSize: '1.05rem' }}>Drag the sliders to adjust flavor shares. Name your mix and buy your custom recipe.</p>
             </div>
             <InteractiveBowl onSuccess={() => navigateTo('cart')} />
           </div>

@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import { Star, ArrowLeft, ShoppingBag, Loader2, Weight } from 'lucide-react';
+import { motion } from 'framer-motion';
+
 // Predefined backup products in case API is offline
 const BACKUP_PRODUCTS = [
   {
@@ -81,11 +84,13 @@ const BACKUP_PRODUCTS = [
     image: "/images/product_sour_cream.png"
   }
 ];
+
 export default function ProductDetails({ productId, navigateTo }) {
   const { addToCart } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [qty, setQty] = useState(1);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     setLoading(true);
     fetch(`/api/products/${productId}`)
@@ -104,6 +109,7 @@ export default function ProductDetails({ productId, navigateTo }) {
         setLoading(false);
       });
   }, [productId]);
+
   const handleAddToCart = () => {
     if (product) {
       addToCart(product, qty);
@@ -112,14 +118,22 @@ export default function ProductDetails({ productId, navigateTo }) {
       }
     }
   };
+
   if (loading) {
     return (
       <div className="container" style={{ padding: '80px 24px', textAlign: 'center' }}>
-        <div className="animate-spin-slow" style={{ fontSize: '2.5rem', display: 'inline-block' }}>🌀</div>
+        <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+          style={{ display: 'inline-block', color: 'var(--primary)' }}
+        >
+          <Loader2 size={40} />
+        </motion.div>
         <p style={{ marginTop: '12px', color: 'var(--text-muted)' }}>Retrieving specifications...</p>
       </div>
     );
   }
+
   if (!product) {
     return (
       <div className="container" style={{ padding: '80px 24px', textAlign: 'center' }}>
@@ -130,6 +144,7 @@ export default function ProductDetails({ productId, navigateTo }) {
       </div>
     );
   }
+
   return (
     <div className="container" style={{ padding: '40px 24px 80px' }}>
       
@@ -150,8 +165,9 @@ export default function ProductDetails({ productId, navigateTo }) {
           marginBottom: '32px'
         }}
       >
-        ← Back to Shop
+        <ArrowLeft size={16} /> Back to Shop
       </button>
+
       <div style={{
         display: 'flex',
         flexWrap: 'wrap',
@@ -185,6 +201,7 @@ export default function ProductDetails({ productId, navigateTo }) {
             }}
           />
         </div>
+
         {/* Right column: Content specifications */}
         <div style={{
           flex: '1.5 1 450px',
@@ -194,16 +211,22 @@ export default function ProductDetails({ productId, navigateTo }) {
         }}>
           <div>
             <span className="badge badge-secondary" style={{ marginBottom: '8px' }}>{product.category} Seasoning</span>
-            <h2 style={{ fontSize: '2.4rem', color: 'var(--text-dark)', marginBottom: '8px' }}>{product.name}</h2>
+            <h2 style={{ fontSize: '2.4rem', color: 'var(--text-dark)', marginBottom: '8px', margin: '0 0 8px' }}>{product.name}</h2>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.95rem' }}>
-              <span style={{ color: '#FFB300', fontSize: '1.2rem' }}>★★★★★</span>
+              <div style={{ display: 'flex', gap: '2px' }}>
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={16} fill="#FFB300" stroke="none" />
+                ))}
+              </div>
               <span style={{ fontWeight: 'bold' }}>{product.rating}</span>
               <span style={{ color: 'var(--text-muted)' }}>(100% Customer Satisfaction)</span>
             </div>
           </div>
-          <p style={{ color: 'var(--text-dark)', fontSize: '1.05rem', lineHeight: '1.7' }}>
+
+          <p style={{ color: 'var(--text-dark)', fontSize: '1.05rem', lineHeight: '1.7', margin: 0 }}>
             {product.description}
           </p>
+
           {/* Pricing & quantity adding block */}
           <div style={{
             display: 'flex',
@@ -230,7 +253,10 @@ export default function ProductDetails({ productId, navigateTo }) {
                   border: '1px solid var(--border-color)',
                   cursor: 'pointer',
                   fontWeight: 'bold',
-                  fontSize: '1.1rem'
+                  fontSize: '1.1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
               >
                 -
@@ -248,37 +274,46 @@ export default function ProductDetails({ productId, navigateTo }) {
                   border: '1px solid var(--border-color)',
                   cursor: 'pointer',
                   fontWeight: 'bold',
-                  fontSize: '1.1rem'
+                  fontSize: '1.1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
               >
                 +
               </button>
             </div>
-            <button onClick={handleAddToCart} className="btn btn-primary" style={{ padding: '14px 36px', fontSize: '1rem' }}>
-              Add To Bag 🛍️
+            <button 
+              onClick={handleAddToCart} 
+              className="btn btn-primary" 
+              style={{ padding: '14px 36px', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}
+            >
+              Add To Bag
+              <ShoppingBag size={18} />
             </button>
           </div>
+
           {/* Nutritional Profile table */}
           <div className="card glass" style={{ padding: '24px' }}>
-            <h4 style={{ fontFamily: 'var(--font-title)', fontSize: '1.1rem', marginBottom: '14px' }}>
+            <h4 style={{ fontFamily: 'var(--font-title)', fontSize: '1.1rem', marginBottom: '14px', margin: '0 0 14px' }}>
               Nutritional Profile (Per 100g)
             </h4>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', gap: '16px', textAlign: 'center' }}>
               <div style={{ borderRight: '1px solid var(--border-color)', paddingRight: '8px' }}>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Calories</p>
-                <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--accent)' }}>{product.nutrients.calories} kcal</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: '0 0 4px' }}>Calories</p>
+                <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--accent)', margin: 0 }}>{product.nutrients.calories} kcal</p>
               </div>
               <div style={{ borderRight: '1px solid var(--border-color)', paddingRight: '8px' }}>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Protein</p>
-                <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--secondary)' }}>{product.nutrients.protein}g</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: '0 0 4px' }}>Protein</p>
+                <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--secondary)', margin: 0 }}>{product.nutrients.protein}g</p>
               </div>
               <div style={{ borderRight: '1px solid var(--border-color)', paddingRight: '8px' }}>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Carbs</p>
-                <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--text-dark)' }}>{product.nutrients.carbs}g</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: '0 0 4px' }}>Carbs</p>
+                <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--text-dark)', margin: 0 }}>{product.nutrients.carbs}g</p>
               </div>
               <div>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Dietary Fiber</p>
-                <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--primary-dark)' }}>{product.nutrients.fiber}g</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: '0 0 4px' }}>Dietary Fiber</p>
+                <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--primary-dark)', margin: 0 }}>{product.nutrients.fiber}g</p>
               </div>
             </div>
           </div>

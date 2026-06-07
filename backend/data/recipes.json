@@ -1,0 +1,96 @@
+[
+  {
+    "id": "rec_1",
+    "name": "Royal Creamy Makhana Kheer",
+    "description": "A luxurious and healthy twist to the traditional Indian rice pudding. Made with slow-reduced low-fat milk, roasted ground makhana, saffron, cardamom, and garnished with pistachios.",
+    "prepTime": "10 mins",
+    "cookTime": "25 mins",
+    "difficulty": "Easy",
+    "servings": 4,
+    "ingredients": [
+      { "name": "Roasted Makhana (Fox Nuts)", "amount": 50, "unit": "g" },
+      { "name": "Milk (or Almond Milk for vegan)", "amount": 1, "unit": "L" },
+      { "name": "Jaggery powder or Maple Syrup", "amount": 80, "unit": "g" },
+      { "name": "Cardamom Powder", "amount": 0.5, "unit": "tsp" },
+      { "name": "Saffron Strands", "amount": 8, "unit": "pieces" },
+      { "name": "Sliced Almonds & Pistachios", "amount": 2, "unit": "tbsp" }
+    ],
+    "instructions": [
+      "Lightly crush 3/4 of the roasted makhana, keeping the remaining 1/4 whole.",
+      "Bring the milk to a boil in a heavy-bottomed pan. Add saffron strands and simmer on low heat for 10 minutes until it slightly thickens.",
+      "Add both crushed and whole makhana to the milk. Cook on medium-low heat for 12-15 minutes, stirring occasionally, until the makhana becomes soft and absorbs the milk flavor.",
+      "Stir in the cardamom powder and sliced nuts. Cook for 2 more minutes.",
+      "Turn off the heat. Let it cool slightly, then stir in the jaggery powder or sweetener of choice. (Adding jaggery to boiling milk can curdle it).",
+      "Serve warm or chilled, garnished with extra saffron and nuts."
+    ],
+    "nutrients": {
+      "calories": 180,
+      "protein": 6.5,
+      "carbs": 28,
+      "fat": 4.5
+    }
+  },
+  {
+    "id": "rec_2",
+    "name": "Tangy Sprouts & Makhana Chaat",
+    "description": "An incredibly fresh, crunchy, and oil-free high-protein salad/chaat. Packed with sprouts, juicy cucumbers, tomatoes, seasoned with zesty lemon juice and mint chutney.",
+    "prepTime": "15 mins",
+    "cookTime": "5 mins",
+    "difficulty": "Easy",
+    "servings": 2,
+    "ingredients": [
+      { "name": "Roasted Crispy Makhana", "amount": 40, "unit": "g" },
+      { "name": "Boiled Green Moong Sprouts", "amount": 100, "unit": "g" },
+      { "name": "Finely Chopped Onion", "amount": 1, "unit": "medium" },
+      { "name": "Chopped Tomatoes & Cucumber", "amount": 120, "unit": "g" },
+      { "name": "Mint & Coriander Chutney", "amount": 2, "unit": "tbsp" },
+      { "name": "Chaat Masala & Lemon Juice", "amount": 1, "unit": "tsp" },
+      { "name": "Pomegranate seeds for garnish", "amount": 2, "unit": "tbsp" }
+    ],
+    "instructions": [
+      "In a large mixing bowl, combine the boiled moong sprouts, chopped onions, tomatoes, and cucumbers.",
+      "Drizzle the mint-coriander chutney and fresh lemon juice over the mixture.",
+      "Sprinkle the chaat masala and salt according to taste. Toss everything gently to mix.",
+      "Just before serving, add the crispy roasted makhana and mix quickly so the makhana stays crunchy.",
+      "Garnish with fresh coriander leaves, pomegranate seeds, and a pinch of black salt. Enjoy immediately!"
+    ],
+    "nutrients": {
+      "calories": 140,
+      "protein": 8.0,
+      "carbs": 24,
+      "fat": 1.2
+    }
+  },
+  {
+    "id": "rec_3",
+    "name": "Mughlai Makhana Peas Curry",
+    "description": "A rich, creamy, and flavorful main course curry. Lightly roasted makhana and tender green peas simmered in a velvet tomato, cashew, and aromatic onion-based gravy.",
+    "prepTime": "15 mins",
+    "cookTime": "20 mins",
+    "difficulty": "Medium",
+    "servings": 3,
+    "ingredients": [
+      { "name": "Roasted Whole Makhana", "amount": 60, "unit": "g" },
+      { "name": "Boiled Green Peas", "amount": 150, "unit": "g" },
+      { "name": "Onion Paste & Tomato Puree", "amount": 200, "unit": "g" },
+      { "name": "Soaked Cashew Paste", "amount": 3, "unit": "tbsp" },
+      { "name": "Ginger-Garlic Paste", "amount": 1, "unit": "tsp" },
+      { "name": "Garam Masala, Turmeric & Chili Powder", "amount": 1, "unit": "tsp" },
+      { "name": "Coriander leaves & Cooking Oil", "amount": 2, "unit": "tbsp" }
+    ],
+    "instructions": [
+      "Heat 1 tbsp of oil in a pan and sauté the ginger-garlic paste and onion paste until golden brown.",
+      "Add tomato puree and cook until the oil starts separating from the masala.",
+      "Add turmeric, red chili powder, coriander powder, and cashew paste. Cook on low heat for 3-4 minutes, stirring continuously.",
+      "Pour in 1.5 cups of warm water to form a smooth gravy. Bring it to a gentle boil.",
+      "Add the boiled green peas and roasted makhana. Simmer covered for 5-7 minutes so the makhana absorbs the rich gravy.",
+      "Stir in garam masala and heavy cream (optional). Garnish with fresh coriander and serve warm with Roti or Naan."
+    ],
+    "nutrients": {
+      "calories": 260,
+      "protein": 7.8,
+      "carbs": 32,
+      "fat": 11.5
+    }
+  }
+]

@@ -1,0 +1,116 @@
+[
+  {
+    "id": "prod_1",
+    "name": "Classic Himalayan Pink Salt Makhana",
+    "description": "Slow-roasted to crispy perfection and lightly dusted with mineral-rich Himalayan pink salt and a touch of organic olive oil. The perfect clean, guilt-free daily snack.",
+    "price": 4.99,
+    "category": "Plain",
+    "flavor": "Salted",
+    "stock": 120,
+    "rating": 4.8,
+    "nutrients": {
+      "calories": 350,
+      "protein": 9.2,
+      "carbs": 77.0,
+      "fat": 1.2,
+      "fiber": 14.5
+    },
+    "color": "#F3E5AB",
+    "image": "/images/product_salted.png"
+  },
+  {
+    "id": "prod_2",
+    "name": "Tangy Tomato Herbs Makhana",
+    "description": "A delightful blend of sun-dried tomato powder, dynamic Indian spices, and aromatic Italian herbs. It is sweet, sour, and intensely flavorful.",
+    "price": 5.49,
+    "category": "Savory",
+    "flavor": "Tomato",
+    "stock": 95,
+    "rating": 4.6,
+    "nutrients": {
+      "calories": 365,
+      "protein": 8.8,
+      "carbs": 74.0,
+      "fat": 3.5,
+      "fiber": 13.0
+    },
+    "color": "#FF7F50",
+    "image": "/images/product_tomato.png"
+  },
+  {
+    "id": "prod_3",
+    "name": "Smoked Peri-Peri Fire Makhana",
+    "description": "For those who love a spicy kick! Coated with a fiery seasoning of African bird's eye chilies, garlic, lemon peel, and smoked paprika.",
+    "price": 5.99,
+    "category": "Spicy",
+    "flavor": "Peri-Peri",
+    "stock": 80,
+    "rating": 4.9,
+    "nutrients": {
+      "calories": 370,
+      "protein": 9.0,
+      "carbs": 72.0,
+      "fat": 4.2,
+      "fiber": 12.8
+    },
+    "color": "#E2583E",
+    "image": "/images/product_peri_peri.png"
+  },
+  {
+    "id": "prod_4",
+    "name": "Gourmet White Cheddar Makhana",
+    "description": "Indulge in the cheesy goodness! Roasted fox nuts seasoned with real, premium aged white cheddar cheese for a smooth, melt-in-your-mouth flavor.",
+    "price": 5.99,
+    "category": "Savory",
+    "flavor": "Cheese",
+    "stock": 110,
+    "rating": 4.7,
+    "nutrients": {
+      "calories": 385,
+      "protein": 10.2,
+      "carbs": 70.0,
+      "fat": 5.8,
+      "fiber": 11.5
+    },
+    "color": "#F3E5AB",
+    "image": "/images/product_cheddar.png"
+  },
+  {
+    "id": "prod_5",
+    "name": "Golden Butter Caramel Makhana",
+    "description": "A sweet sensation. Glazed with a crispy coating of artisanal melted brown sugar, butter, and a pinch of sea salt. Sweet snacking done right.",
+    "price": 6.49,
+    "category": "Sweet",
+    "flavor": "Caramel",
+    "stock": 70,
+    "rating": 4.9,
+    "nutrients": {
+      "calories": 410,
+      "protein": 7.5,
+      "carbs": 82.0,
+      "fat": 6.5,
+      "fiber": 10.0
+    },
+    "color": "#C19A6B",
+    "image": "/images/product_caramel.png"
+  },
+  {
+    "id": "prod_6",
+    "name": "Sour Cream & Onion Zest Makhana",
+    "description": "A classic savory combo. Crispy fox nuts tossed in smooth, tangy sour cream seasoning and garnished with fine chives and wild spring onion flavor.",
+    "price": 5.49,
+    "category": "Savory",
+    "flavor": "Cream-Onion",
+    "stock": 105,
+    "rating": 4.5,
+    "nutrients": {
+      "calories": 375,
+      "protein": 8.5,
+      "carbs": 75.0,
+      "fat": 4.0,
+      "fiber": 13.2
+    },
+    "color": "#E9FFDB",
+    "image": "/images/product_sour_cream.png"
+  }
+]

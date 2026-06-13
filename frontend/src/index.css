@@ -290,6 +290,12 @@ img {
   background: var(--bg-card) !important;
 }
 
+/* Dark mode image logo invert filter */
+.dark-mode img[src*="logo.png"] {
+  filter: invert(0.9) hue-rotate(180deg) contrast(1.1);
+  mix-blend-mode: screen;
+}
+
 @media (max-width: 768px) {
   /* Prevent horizontal scrolling on viewport */
   body, html {

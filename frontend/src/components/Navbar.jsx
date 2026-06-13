@@ -44,14 +44,23 @@ export default function Navbar({ currentRoute, navigateTo }) {
         <a href="#home" onClick={(e) => { e.preventDefault(); navigateTo('home'); }} style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '8px',
+          gap: '10px',
           fontWeight: 800,
           fontSize: '1.5rem',
           fontFamily: 'var(--font-title)',
           color: 'var(--primary-dark)',
           letterSpacing: '-0.5px'
         }}>
-          <Disc size={28} style={{ color: 'var(--primary)', transform: 'rotate(45deg)' }} />
+          <img 
+            src="/images/logo.png" 
+            alt="Logo" 
+            style={{
+              height: '32px',
+              width: '32px',
+              objectFit: 'contain',
+              borderRadius: '50%'
+            }} 
+          />
           <span style={{ color: 'var(--text-dark)' }}>Makhana</span>
           <span style={{ color: 'var(--primary)', fontWeight: '500' }}>Bliss</span>
         </a>

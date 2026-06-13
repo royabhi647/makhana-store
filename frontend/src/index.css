@@ -279,3 +279,50 @@ img {
   background-color: var(--border-color);
 }
 
+/* --- Mobile Responsiveness & Dark Mode Polish overrides --- */
+
+/* Dynamic Dark Mode helper for inline white backgrounds */
+.dark-mode *[style*="background-color: white"],
+.dark-mode *[style*="background-color:white"],
+.dark-mode *[style*="background: white"],
+.dark-mode *[style*="background:white"] {
+  background-color: var(--bg-card) !important;
+  background: var(--bg-card) !important;
+}
+
+@media (max-width: 768px) {
+  /* Prevent horizontal scrolling on viewport */
+  body, html {
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
+  /* Force grid layouts and flex items with large basis to stack vertically on mobile */
+  div[style*="display: flex"],
+  div[style*="display:flex"] {
+    flex-wrap: wrap !important;
+  }
+  
+  .container > div {
+    flex-direction: column !important;
+  }
+
+  div[style*="flex:"],
+  div[style*="flex-basis"] {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Stack grid layouts to 1-column on mobile */
+  div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Button text wrapping safety */
+  .btn {
+    white-space: nowrap !important;
+    padding: 10px 20px !important;
+    font-size: 0.9rem !important;
+  }
+}
+

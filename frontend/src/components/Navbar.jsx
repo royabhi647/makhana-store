@@ -248,7 +248,7 @@ export default function Navbar({ currentRoute, navigateTo }) {
             justifyContent: 'center',
             transition: 'background var(--transition-fast)'
           }}
-          className="btn-icon"
+          className="btn-icon desktop-action"
           title="Toggle Dark Mode"
           >
             {darkMode ? (
@@ -293,7 +293,7 @@ export default function Navbar({ currentRoute, navigateTo }) {
           </a>
           {/* Authentication Action */}
           {userInfo ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div className="desktop-action" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <a
                 href="#profile"
                 onClick={(e) => { e.preventDefault(); navigateTo('profile'); }}
@@ -340,7 +340,7 @@ export default function Navbar({ currentRoute, navigateTo }) {
           ) : (
             <button
               onClick={() => navigateTo('profile')}
-              className="btn btn-primary"
+              className="btn btn-primary desktop-action"
               style={{
                 padding: '8px 20px',
                 fontSize: '0.85rem'
@@ -378,18 +378,21 @@ export default function Navbar({ currentRoute, navigateTo }) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="glass mobile-drawer" 
+            className="mobile-drawer" 
             style={{
               position: 'absolute',
               top: 'var(--nav-height)',
               left: 0,
               width: '100%',
+              backgroundColor: 'var(--bg-main)',
               borderBottom: '1px solid var(--border-color)',
-              padding: '16px 24px',
-              boxShadow: 'var(--shadow-md)',
+              borderLeft: '1px solid var(--border-color)',
+              borderRight: '1px solid var(--border-color)',
+              padding: '24px',
+              boxShadow: 'var(--shadow-lg)',
               display: 'flex',
               flexDirection: 'column',
-              gap: '16px',
+              gap: '20px',
               zIndex: 999,
               overflow: 'hidden'
             }}
@@ -397,9 +400,9 @@ export default function Navbar({ currentRoute, navigateTo }) {
             {navLinks.map((link) => {
               if (link.label === 'Shop') {
                 return (
-                  <div key={link.route} style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '8px 0' }}>
-                    <span style={{ fontFamily: 'var(--font-title)', fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-dark)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Shop Menu</span>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', paddingLeft: '12px' }}>
+                  <div key={link.route} style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '4px 0' }}>
+                    <span style={{ fontFamily: 'var(--font-title)', fontWeight: 700, fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Shop Menu</span>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', paddingLeft: '12px', marginTop: '4px' }}>
                       <a
                         href="#catalog"
                         onClick={(e) => { e.preventDefault(); setMobileMenuOpen(false); navigateTo('catalog'); }}
@@ -432,7 +435,7 @@ export default function Navbar({ currentRoute, navigateTo }) {
                   style={{
                     fontFamily: 'var(--font-title)',
                     fontWeight: 600,
-                    fontSize: '1rem',
+                    fontSize: '1.05rem',
                     color: currentRoute === link.route ? 'var(--primary-dark)' : 'var(--text-dark)',
                     padding: '8px 0',
                     display: 'flex',
@@ -450,13 +453,91 @@ export default function Navbar({ currentRoute, navigateTo }) {
                 </a>
               );
             })}
+
+            {/* Mobile Theme Toggle */}
+            <div style={{ 
+              borderTop: '1px solid var(--border-color)', 
+              paddingTop: '16px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'space-between' 
+            }}>
+              <span style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-muted)' }}>Dark Theme</span>
+              <button onClick={toggleDarkMode} style={{
+                background: 'none',
+                cursor: 'pointer',
+                padding: '8px',
+                color: 'var(--text-dark)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'var(--bg-main)',
+                border: '1px solid var(--border-color)'
+              }}>
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+            </div>
+
+            {/* Mobile Auth Actions */}
+            <div style={{ 
+              borderTop: '1px solid var(--border-color)', 
+              paddingTop: '16px', 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: '12px' 
+            }}>
+              {userInfo ? (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-dark)', fontWeight: 600 }}>
+                    <User size={18} />
+                    <span>{userInfo.name}</span>
+                    {userInfo.isAdmin && <span className="badge badge-accent" style={{ marginLeft: 'auto' }}>Admin</span>}
+                  </div>
+                  <div style={{ display: 'flex', gap: '12px', marginTop: '6px' }}>
+                    <button 
+                      onClick={() => { setMobileMenuOpen(false); navigateTo('profile'); }}
+                      className="btn btn-outline" 
+                      style={{ flex: 1, padding: '10px', fontSize: '0.85rem' }}
+                    >
+                      Profile
+                    </button>
+                    {userInfo.isAdmin && (
+                      <button 
+                        onClick={() => { setMobileMenuOpen(false); navigateTo('admin'); }}
+                        className="btn btn-secondary" 
+                        style={{ flex: 1, padding: '10px', fontSize: '0.85rem' }}
+                      >
+                        Console
+                      </button>
+                    )}
+                  </div>
+                  <button 
+                    onClick={() => { setMobileMenuOpen(false); logout(); }}
+                    className="btn btn-outline" 
+                    style={{ width: '100%', padding: '10px', borderColor: 'var(--accent)', color: 'var(--accent)', marginTop: '8px' }}
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <button 
+                  onClick={() => { setMobileMenuOpen(false); navigateTo('profile'); }}
+                  className="btn btn-primary" 
+                  style={{ width: '100%', padding: '12px' }}
+                >
+                  Sign In
+                </button>
+              )}
+            </div>
+
           </motion.div>
         )}
       </AnimatePresence>
       {/* Styling for Responsive Navbar */}
       <style>{`
         @media (max-width: 768px) {
-          .desktop-menu {
+          .desktop-menu, .desktop-action {
             display: none !important;
           }
           .mobile-toggle {

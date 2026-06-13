@@ -1,8 +1,12 @@
 // makhana-store > backend > models > dbService.js
 
 import fs from 'fs';
+import bcrypt from 'bcryptjs';
 import { isMongoConnected, localDbPath } from '../config/db.js';
-import { User, Product, Order, Recipe } from './schemas.js';
+import User from './userModel.js';
+import Product from './productModel.js';
+import Order from './orderModel.js';
+import Recipe from './recipeModel.js';
 // Helper to read local DB
 const readLocalDb = () => {
   try {
@@ -54,10 +58,14 @@ export const dbService = {
       } else {
         const db = readLocalDb();
         const _id = generateId();
+        // Manually hash password for local database storage
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(userData.password, salt);
         const newUser = {
           _id,
           id: _id,
           ...userData,
+          password: hashedPassword,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
         };

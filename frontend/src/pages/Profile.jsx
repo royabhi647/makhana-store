@@ -1,7 +1,7 @@
-// makhana-store > frontend > src > pages > Profile.jsx
-
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 import { Lock, UserPlus, Info, ShieldCheck, User, Loader2, Truck, AlertCircle, LogIn } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -21,7 +21,7 @@ export default function Profile() {
   useEffect(() => {
     if (userInfo) {
       setOrdersLoading(true);
-      fetch('/api/orders/myorders', {
+      fetch(`${API_BASE}/api/orders/myorders`, {
         headers: {
           Authorization: `Bearer ${userInfo.token}`
         }
@@ -149,25 +149,6 @@ export default function Profile() {
               {loading ? 'Processing...' : isLoginView ? 'Sign In' : 'Sign Up'}
             </button>
           </form>
-
-          {/* Demonstration Accounts details banner */}
-          <div style={{
-            marginTop: '20px',
-            padding: '14px',
-            backgroundColor: 'var(--secondary-light)',
-            borderRadius: '12px',
-            fontSize: '0.75rem',
-            lineHeight: '1.5',
-            color: 'var(--secondary)',
-            border: '1px solid rgba(74, 93, 78, 0.1)'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 'bold', marginBottom: '6px' }}>
-              <Info size={14} />
-              <span>Testing Credentials</span>
-            </div>
-            • Admin account: <b>admin@makhana.com</b> / <b>admin123</b><br />
-            • Customer account: <b>user@makhana.com</b> / <b>user123</b>
-          </div>
 
           <div style={{ textAlign: 'center', marginTop: '24px' }}>
             <button

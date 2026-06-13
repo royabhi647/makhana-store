@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 import { Star, ArrowLeft, ShoppingBag, Loader2, Weight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -93,7 +95,7 @@ export default function ProductDetails({ productId, navigateTo }) {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/products/${productId}`)
+    fetch(`${API_BASE}/api/products/${productId}`)
       .then((res) => {
         if (!res.ok) throw new Error('API issue');
         return res.json();

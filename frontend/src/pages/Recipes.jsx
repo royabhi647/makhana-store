@@ -1,7 +1,7 @@
-// makhana-store > frontend > src > pages > Recipes.jsx
-
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 import { Clock, ChefHat, Users, Scale, CheckCircle2, Flame, Award, BookOpen, ChevronRight, Check } from 'lucide-react';
 
 const BACKUP_RECIPES = [
@@ -99,7 +99,7 @@ export default function Recipes() {
   const [checkedIngredients, setCheckedIngredients] = useState({});
 
   useEffect(() => {
-    fetch('/api/recipes')
+    fetch(`${API_BASE}/api/recipes`)
       .then((res) => {
         if (!res.ok) throw new Error('API offline');
         return res.json();

@@ -1,7 +1,8 @@
-// makhana-store > frontend > src > pages > AdminDashboard.jsx
-
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+
 export default function AdminDashboard() {
   const { userInfo } = useContext(AuthContext);
   // Lists state
@@ -22,7 +23,7 @@ export default function AdminDashboard() {
     if (userInfo && userInfo.isAdmin) {
       setLoadingOrders(true);
       // Load Orders
-      fetch('/api/orders', {
+      fetch(`${API_BASE}/api/orders`, {
         headers: { Authorization: `Bearer ${userInfo.token}` }
       })
         .then((res) => {
@@ -40,7 +41,7 @@ export default function AdminDashboard() {
           setLoadingOrders(false);
         });
       // Load Products
-      fetch('/api/products')
+      fetch(`${API_BASE}/api/products`)
         .then((res) => res.json())
         .then((data) => setProducts(data))
         .catch((err) => console.warn('Products load failed.', err));
@@ -67,7 +68,7 @@ export default function AdminDashboard() {
       nutrients: { calories: 350, protein: 9, carbs: 75, fat: 2, fiber: 14 }
     };
     try {
-      const response = await fetch('/api/products', {
+      const response = await fetch(`${API_BASE}/api/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -105,7 +106,7 @@ export default function AdminDashboard() {
   };
   const handleDeliver = async (orderId) => {
     try {
-      const response = await fetch(`/api/orders/${orderId}/deliver`, {
+      const response = await fetch(`${API_BASE}/api/orders/${orderId}/deliver`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${userInfo.token}`

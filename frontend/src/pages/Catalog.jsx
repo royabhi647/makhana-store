@@ -1,7 +1,7 @@
-// makhana-store > frontend > src > pages > Catalog.jsx
-
 import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BarChart3, ShoppingCart, Star, X, Loader2 } from 'lucide-react';
 // Default backup products in case API is offline
@@ -87,7 +87,7 @@ export default function Catalog() {
   const [sort, setSort] = useState('none');
   const [selectedProduct, setSelectedProduct] = useState(null); // Detail modal
   useEffect(() => {
-    fetch('/api/products')
+    fetch(`${API_BASE}/api/products`)
       .then((res) => {
         if (!res.ok) throw new Error('API offline');
         return res.json();

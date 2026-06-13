@@ -35,7 +35,21 @@ const initializeLocalDb = () => {
 export const connectDB = async () => {
   // Always initialize local DB structure in case we need it
   initializeLocalDb();
-  const mongoUri = process.env.MONGODB_URI;
+  let mongoUri = process.env.MONGODB_URI;
+  if (mongoUri && process.env.user_name && process.env.user_password) {
+    const encodedUser = encodeURIComponent(process.env.user_name.trim());
+    const encodedPass = encodeURIComponent(process.env.user_password.trim());
+    if (mongoUri.includes('<username>') || mongoUri.includes('<password>')) {
+      mongoUri = mongoUri
+        .replace('<username>', encodedUser)
+        .replace('<password>', encodedPass);
+    } else {
+      mongoUri = mongoUri.replace(
+        /^(mongodb(?:\+srv)?:\/\/)([^:]+):([^@]+)@/,
+        `$1${encodedUser}:${encodedPass}@`
+      );
+    }
+  }
   if (!mongoUri) {
     console.log('⚠️ MONGODB_URI not found. Running in Local JSON Database Mode.');
     isMongoConnected = false;

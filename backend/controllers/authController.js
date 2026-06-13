@@ -19,16 +19,12 @@ export const registerUser = async (req, res) => {
     if (userExists) {
       return res.status(400).json({ message: 'User already exists' });
     }
-    // Hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
     // Default first user as Admin for demonstration simplicity, or standard logic
-    // Let's make it so if they register with email "admin@makhana.com", they are Admin automatically.
     const isFirstUserAdmin = email.toLowerCase() === 'admin@makhana.com';
     const user = await dbService.users.create({
       name,
       email,
-      password: hashedPassword,
+      password, // Plain password, hashing delegated to dbService / userModel
       isAdmin: isFirstUserAdmin
     });
     res.status(201).json({

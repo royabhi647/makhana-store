@@ -1,8 +1,8 @@
-// makhana-store > frontend > src > pages > Checkout.jsx
-
 import React, { useState, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { AuthContext } from '../context/AuthContext';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 import { CreditCard, Sparkles, Package, ArrowLeft, CheckCircle2, ChevronRight } from 'lucide-react';
 
 export default function Checkout({ navigateTo }) {
@@ -63,7 +63,7 @@ export default function Checkout({ navigateTo }) {
       totalPrice
     };
     try {
-      const response = await fetch('/api/orders', {
+      const response = await fetch(`${API_BASE}/api/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ export default function Checkout({ navigateTo }) {
         throw new Error(data.message || 'Order creation failed');
       }
       // If backend works, pay the order mock-style immediately
-      const payResponse = await fetch(`/api/orders/${data._id}/pay`, {
+      const payResponse = await fetch(`${API_BASE}/api/orders/${data._id}/pay`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

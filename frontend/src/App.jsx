@@ -15,6 +15,7 @@ import Checkout from './pages/Checkout';
 import Profile from './pages/Profile';
 import AdminDashboard from './pages/AdminDashboard';
 import InteractiveBowl from './components/InteractiveBowl';
+import WhatsAppFloatingButton from './components/WhatsAppFloatingButton';
 // Bind confetti to window for child component access
 window.confetti = confetti;
 export default function App() {
@@ -84,12 +85,15 @@ export default function App() {
   return (
     <AuthProvider>
       <CartProvider>
-        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
           <Navbar currentRoute={currentRoute} navigateTo={navigateTo} />
           <main style={{ flexGrow: 1 }}>
             {renderPage()}
           </main>
           <Footer navigateTo={navigateTo} />
+
+          {/* Floating WhatsApp Booking Button */}
+          <WhatsAppFloatingButton />
         </div>
       </CartProvider>
     </AuthProvider>

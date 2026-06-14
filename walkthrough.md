@@ -89,3 +89,23 @@ For testing, we have preloaded the databases with seed details. You can log in u
    - Email: `user@makhana.com`
    - Password: `user123`
    - *Gives access to custom order tracking lists.*
+
+---
+
+## 💬 WhatsApp Order Booking Integration
+
+We have implemented a highly interactive and premium WhatsApp Order Booking feature:
+
+### 1. Dynamic Component
+- [WhatsAppFloatingButton.jsx](file:///Users/abhishekkumar/makhana-store/frontend/src/components/WhatsAppFloatingButton.jsx): A new React component that dynamically builds order templates based on active cart states and user login sessions.
+  - **Dynamic Cart-aware Template**: When the cart contains items, it formats a detailed outline with item names, custom mix flavor percentages, individual sub-prices, shipping terms, and the exact grand total.
+  - **General Enquiry Template**: If the cart is empty, it formats a clean outline of all available flavors for quick selection and blank details fields.
+  - **Real-time Pricing Badge**: The tooltip badge updates dynamically with the total cart price (e.g., `Book Order ($34.96) 💬`) to make checkout highly visual.
+
+### 2. Styling & Motion Polish
+- [index.css](file:///Users/abhishekkumar/makhana-store/frontend/src/index.css): Added a pulsing glowing green aura animation (`whatsappPulse`) that loops continuously. On hover, the pulsing pauses and transitions smoothly into a larger glowing drop-shadow.
+- **Mobile responsiveness**: Added media breakpoint overrides to hide the tooltip text badge on mobile screen widths to prevent UI clutter while maintaining full clickability.
+
+### 3. Context Integration
+- Refactored [App.jsx](file:///Users/abhishekkumar/makhana-store/frontend/src/App.jsx) to clean up old hardcoded static href links and render `<WhatsAppFloatingButton />` as a child of the `CartProvider` and `AuthProvider`.
+
